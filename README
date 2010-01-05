@@ -1,0 +1,27 @@
+Simple PDU generator
+
+Web application that simply generates PDU.
+It's able to store generated PDU's.
+
+Requirements:
+   python 2.5 >=
+   django 1.1.1
+   sqlite3 (or other database engine)
+
+
+======================================
+To start you need to define db engine.
+'sqlite3' is default.
+
+
+======================================
+If you're using default database engine,
+you have to do three steps (linux users):
+
+1) create 'db' directory in project dir:
+   $> mkdir db 
+   $> touch db/pdugen.db
+2) synchronize it with django
+   $> python manage.py syncdb
+3) start server
+   $> python manage.py runserver

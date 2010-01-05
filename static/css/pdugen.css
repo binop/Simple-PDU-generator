@@ -1,0 +1,42 @@
+body {
+    font-family:"Arial","Helvetica","Verdana","sans-serif";
+    font-size:10px;
+}
+
+#pdugen {
+    width: 800px;
+}
+
+.pdu-option {
+    border: 1px solid #45930B;
+    padding:5px 10px;
+    margin-bottom:5px;
+}
+
+.field-name {
+    font-weight : bold;
+}
+
+.field_name {
+    font-weight : bold;
+}
+
+.field_value input {
+    width : 20px;
+}
+
+.field_value_medium input {
+    width : 120px;
+}
+
+.field_char_medium input {
+    color: gray;
+    width: 80%;  
+    height: 50px; 
+}
+
+.field_char_large input	{
+    color: gray;
+    width: 80%;  
+    height: 150px; 
+}

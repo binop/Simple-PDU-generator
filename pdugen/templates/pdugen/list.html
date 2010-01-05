@@ -1,0 +1,30 @@
+{% extends "pdugen/base.html" %}
+
+{% block pdugen %}
+<div class="ui-tabs-panel ui-widget-content"> 
+
+  {% for draft in smsdata_list %}
+  <div class="ui-corner-all pdu-option">
+    
+    <div style="float:left">
+      <a href="{% url details object_id=draft.id %}"> 
+	{{ draft.DRAFT_NAME }}
+      </a>
+    </div>
+    
+    <div style="float:right">
+      <a href="{% url remove object_id=draft.id %}"> 
+	X
+      </a>
+    </div>
+      
+    <div style="clear:both" > </div>
+    
+  </div>
+  {% empty %}
+  <div class="ui-corner-all pdu-option" style="text-align:center;">
+    There are no store drafts
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

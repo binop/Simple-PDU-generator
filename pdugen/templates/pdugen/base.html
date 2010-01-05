@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/pdugen.css" /> 
+{% endblock %}
+
+{% block application-header %}Simple PDU Generator{% endblock %}
+{% block title %}Simple PDU Generator{% endblock %}
+
+{% block application %}
+<div id="pdugen" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+    <li class="ui-corner-top ui-state-default">
+      <a href="{% url list %}">Drafts list</a>
+    </li>
+    <li class="ui-corner-top ui-state-default">
+      <a href="{% url new %}">Create new</a> 
+    </li>
+  </ul>
+
+  {% block pdugen%}
+  {% endblock %}
+
+</div>
+{% endblock %}

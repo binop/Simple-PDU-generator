@@ -1,0 +1,129 @@
+{% extends "pdugen/base.html" %}
+
+{% block pdugen %}
+
+<div class="ui-tabs-panel ui-widget-content"> 
+{% for field in form %}
+{% if field.errors %}
+<div class="ui-state-highlight ui-corner-all pdu-option" >
+    <div class="errors-label">
+      <strong>Errors</strong>
+    </div>
+    {% for error in field.errors %}
+    <div class="error-message">{{ field.label }} - {{ error|escape }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endfor %}
+
+{% if form.instance.id %}
+  <form action="{{ form.instance.get_absolute_url }}" method="POST">
+  {% else %}
+  <form action="" method="POST">
+    {% endif %}
+
+    <div class="ui-corner-all pdu-option">
+      <label class="field_name" for="id_draft">Draft name</label>
+    {% if form.instance.id %}
+      {{ form.instance.DRAFT_NAME }}
+    <div style="display:none"> 
+      {{ form.DRAFT_NAME }}
+      {% comment %}Replace with readonly form{% endcomment %}
+    </div>
+    {% else %}
+    {{ form.DRAFT_NAME }}
+    {% endif %}
+	
+    {{ form.save_draft_flag }}
+	<label class="field_name" for="id_save_draft_flag">
+	  {% if form.instance.id %}
+	  Update
+	  {% else %}
+	  Save
+	  {% endif %}
+	  draft
+	</label>
+      </div>
+
+    <div class="ui-corner-all pdu-option">
+      <label class="field_name" for="id_RP">RP</label> : 
+      <span class="field_value">{{ form.RP }}</span>
+	
+	<label class="field_name" for="id_UDHI">UDHI</label> : 
+	<span class="field_value">{{ form.UDHI }}</span>
+	
+	<label class="field_name" for="id_SRR">SRR</label> : 
+	<span class="field_value">{{ form.SRR }}</span>
+	
+	<label class="field_name" for="id_VPF1">VPF1</label> : 
+	<span class="field_value">{{ form.VPF1 }}</span>
+	<span class="field_value">{{ form.VPF2 }}</span>
+	
+	<label class="field_name" for="id_RD">RD</label> : 
+	<span class="field_value">{{ form.RD }}</span>
+	
+	<label class="field_name" for="id_MTI">MTI</label> : 
+	<span class="field_value">{{ form.MTI1 }}{{ form.MTI2 }}</span>
+      </div>
+
+    <div class="ui-corner-all pdu-option" >
+      <label class="field_name" for="id_MR">MR</label> : 
+      <span class="field_value_medium">{{ form.MR }}</span>
+	
+      <label class="field_name" for="id_DA">DA number (eg. 3584544180848)</label> :
+      <span class="field_value_medium">{{ form.DA }}</span>
+    </div>
+
+    <div class="ui-corner-all pdu-option">
+      <label class="field_name" for="id_HC">HC</label>
+      : <span class="field_value">{{ form.HCDCS1 }}</span>
+      <span class="field_value">{{ form.HCDCS2 }}</span>
+      <label class="field_name" for="id_TC">TC</label>
+      : <span class="field_value">{{ form.TC }}</span>
+      <label class="field_name" for="id_CM">CM</label>
+      : <span class="field_value">{{ form.CM }}</span>
+      <label class="field_name" for="id_ALPH">ALPH</label>
+      : <span class="field_value">{{ form.ALPH1 }}</span>
+      <span class="field_value">{{ form.ALPH2 }}</span>
+      <label class="field_name" for="id_CL">CL</label>
+      : <span class="field_value">{{ form.CL1 }}</span>
+      <span class="field_value">{{ form.CL2 }}</span>
+    </div>
+
+    <div class="ui-corner-all pdu-option">
+      <label class="field_name" for="id_PID">PID</label>
+      : <span class="field_value_medium">{{ form.PID }}</span>
+
+      <label class="field_name" for="id_SMSC">SMSC number (eg. 358454400051)</label>
+      <span class="field_value_medium">{{ form.SMSC }}</span>
+    </div>
+
+    <div class="ui-corner-all pdu-option" >
+      <div class="field_name" for="id_UDH">UDH and UD format</div>
+      <div class="field_name">Note: for alphabets different than GSM7 only option 2 is valid.</div>
+      <div class="field_char_medium">{{ form.UDFormat }}</div>
+      
+      <div class="field_name">
+	Option 1 - UDH (hex)
+      </div>
+      <div class="field_name">
+	Option 2 - UDH (hex) + UD (hex)
+      </div>
+      <div class="field_char_medium">{{ form.UDH }}</div>
+    </div>
+      
+    <div class="ui-corner-all pdu-option">
+      <div class="field_name" for="id_UD">UD (GSM7) - valid only for option 1</div>
+      <div class="field_char_large">{{ form.UD }}</div>
+    </div>
+
+    <div class="ui-corner-all pdu-option">
+      <input type="submit" name="details" value="Generate PDU" />
+    </div>
+
+  </form>
+  {% block pdu %}
+  {% endblock %}
+
+</div>
+{% endblock %}
