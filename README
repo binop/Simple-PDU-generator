@@ -18,10 +18,7 @@ To start you need to define db engine.
 If you're using default database engine,
 you have to do three steps (linux users):
 
-1) create 'db' directory in project dir:
-   $> mkdir db 
-   $> touch db/pdugen.db
-2) synchronize it with django
+1) synchronize db
    $> python manage.py syncdb
-3) start server
+2) start server
    $> python manage.py runserver
