@@ -31,7 +31,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 )
 
-ROOT_URLCONF = 'pdugenerator.urls'
+ROOT_URLCONF = 'Simple-PDU-generator.urls'
 
 INSTALLED_APPS = (
     'pdugen', 
